@@ -54,19 +54,20 @@ const BarGauge = (props) => {
   };
   const series = [
     {
-      name: "series-1",
-      data: [30],
+      data: [props?.data || 50],
     },
   ];
 
   return (
-    <Chart
-      options={options}
-      series={series}
-      type="bar"
-      width="100%"
-      height={220}
-    />
+    <>
+      <Chart
+        options={options}
+        series={series}
+        type="bar"
+        width="100%"
+        height={70}
+      />
+    </>
   );
 };
 

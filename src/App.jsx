@@ -1,12 +1,17 @@
 import "./App.css";
+
 import BarGauge from "./components/BarGauge";
 
-function App() {
+import useMonitoring from "./hooks/useMonitoring";
+
+const App = () => {
+  const { cpu, gpu, ram } = useMonitoring();
+
   return (
     <>
-      <BarGauge />
+      <BarGauge data={cpu?.temperature} />
     </>
   );
-}
+};
 
 export default App;
