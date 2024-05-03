@@ -1,0 +1,35 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+body {
+  position: relative;
+  display: inline-flex;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background-color: black;
+
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  overflow: hidden;
+  color: white; 
+}
+
+#root {
+  position: absolute;
+  top: 26%;
+  left: 30%;
+}
