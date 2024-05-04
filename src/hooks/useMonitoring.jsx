@@ -4,6 +4,7 @@ const useMonitoring = () => {
   const [cpu, setCpu] = React.useState();
   const [gpu, setGpu] = React.useState();
   const [ram, setRam] = React.useState();
+  const [kraken, setKraken] = React.useState();
 
   React.useEffect(() => {
     const nzxtDefaults = window.nzxt?.v1;
@@ -15,7 +16,9 @@ const useMonitoring = () => {
         shape: nzxtDefaults?.shape ?? "circle",
         targetFps: nzxtDefaults?.targetFps ?? 10,
         onMonitoringDataUpdate: (data) => {
-          const { cpus, gpus, ram } = data;
+          const { cpus, gpus, ram, kraken } = data;
+
+          console.log("cpus");
 
           const cpu = cpus.pop();
 
@@ -36,6 +39,8 @@ const useMonitoring = () => {
             temperature: Number(cpu?.temperature?.toFixed(0)),
             maxTemperature: Number(cpu?.maxTemperature),
             frequency: Number(cpu?.frequency),
+            fan: Number(cpu?.fanSpeed),
+            watts: Number(cpu?.power.toFixed(0)),
           });
 
           setGpu({
@@ -44,6 +49,8 @@ const useMonitoring = () => {
             temperature: Number(gpu?.temperature?.toFixed(0)),
             maxTemperature: Number(gpu?.maxTemperature),
             frequency: Number(gpu?.frequency),
+            fan: Number(gpu?.fanSpeed),
+            watts: Number(gpu?.power.toFixed(0)),
           });
 
           setRam({
@@ -53,12 +60,16 @@ const useMonitoring = () => {
             ),
             totalSize: Math.round((ram.totalSize ?? 1) / 1024),
           });
+
+          setKraken({
+            temperature: Number(kraken?.liquidTemperature.toFixed(0)),
+          });
         },
       },
     };
   }, []);
 
-  return { cpu, gpu, ram };
+  return { cpu, gpu, ram, kraken };
 };
 
 export default useMonitoring;

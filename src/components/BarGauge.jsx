@@ -1,8 +1,10 @@
-import { ApexOptions } from "apexcharts";
-import Chart from "react-apexcharts";
+import ReactApexChart from "react-apexcharts";
 
 const BarGauge = (props) => {
   const options = {
+    theme: {
+      mode: "dark",
+    },
     tooltip: {
       enabled: false,
     },
@@ -11,11 +13,14 @@ const BarGauge = (props) => {
       toolbar: {
         show: false,
       },
+      sparkline: {
+        enabled: true,
+      },
     },
     xaxis: {
       min: 0,
       max: 100,
-      categories: [1991],
+      categories: [1],
       labels: {
         show: false,
       },
@@ -51,21 +56,26 @@ const BarGauge = (props) => {
     dataLabels: {
       enabled: false,
     },
+    fill: {
+      colors: "#B32824",
+      opacity: 1,
+    },
   };
   const series = [
     {
+      // eslint-disable-next-line react/prop-types
       data: [props?.data || 50],
     },
   ];
 
   return (
     <>
-      <Chart
+      <ReactApexChart
         options={options}
         series={series}
         type="bar"
         width="100%"
-        height={70}
+        height={20}
       />
     </>
   );
