@@ -39,7 +39,7 @@ const BarGauge = (props) => {
     grid: {
       row: {
         colors: ["#e5e5e5", "transparent"],
-        opacity: 0.5,
+        opacity: 0.2,
       },
       xaxis: {
         lines: {
@@ -57,14 +57,24 @@ const BarGauge = (props) => {
       enabled: false,
     },
     fill: {
-      colors: "#B32824",
+      colors: [
+        function ({ value }) {
+          if (value < 60) {
+            return "#00FF00";
+          } else if (value >= 60 && value < 80) {
+            return "#FFA500";
+          } else {
+            return "#FF0000";
+          }
+        },
+      ],
       opacity: 1,
     },
   };
   const series = [
     {
       // eslint-disable-next-line react/prop-types
-      data: [props?.data || 50],
+      data: [props?.data || 0],
     },
   ];
 

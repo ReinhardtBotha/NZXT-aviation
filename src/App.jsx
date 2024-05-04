@@ -66,7 +66,7 @@ const App = () => {
         >
           <div className="label-data-container">
             <p className="indicator-label">PUMP RPM</p>
-            <p>{cpu?.fan || 50}</p>
+            <p>{cpu?.fan || `--`}</p>
           </div>
           <div className="label-data-container">
             <p className="indicator-label">GPU RPM</p>
@@ -74,11 +74,11 @@ const App = () => {
           </div>
           <div className="label-data-container">
             <p className="indicator-label">CPU FREQ</p>
-            <p>{cpu?.frequency || 50}</p>
+            <p>{cpu?.frequency || `--`}</p>
           </div>
           <div className="label-data-container">
             <p className="indicator-label">GPU FREQ</p>
-            <p>{gpu?.frequency || 50}</p>
+            <p>{gpu?.frequency || `--`}</p>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ const App = () => {
             paddingRight: "3rem",
           }}
         >
-          <BarGauge data={cpu?.load} />
+          <BarGauge data={cpu?.load} max={cpu?.m}/>
           <h3>CPU Load</h3>
           <BarGauge data={gpu?.load} />
           <h3>GPU Load</h3>

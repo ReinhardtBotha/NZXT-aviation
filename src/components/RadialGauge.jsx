@@ -52,7 +52,17 @@ const RadialGauge = (props) => {
       },
     },
     fill: {
-      colors: "#00FF00",
+      colors: [
+        function ({ value }) {
+          if (value < 60) {
+            return "#00FF00";
+          } else if (value >= 60 && value < 80) {
+            return "#FFA500";
+          } else {
+            return "#FF0000";
+          }
+        },
+      ],
       opacity: 1,
     },
 
