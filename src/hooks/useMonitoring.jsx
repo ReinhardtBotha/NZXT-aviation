@@ -5,6 +5,12 @@ const useMonitoring = () => {
   const [gpu, setGpu] = React.useState();
   const [ram, setRam] = React.useState();
   const [kraken, setKraken] = React.useState();
+  const [cpuWatts, setCpuWatts] = React.useState(
+    Array.from({ length: 20 }, (_, index) => index + 1)
+  );
+  const [gpuWatts, setGpuWatts] = React.useState(
+    Array.from({ length: 20 }, (_, index) => index + 1)
+  );
 
   React.useEffect(() => {
     const nzxtDefaults = window.nzxt?.v1;
@@ -17,8 +23,6 @@ const useMonitoring = () => {
         targetFps: nzxtDefaults?.targetFps ?? 10,
         onMonitoringDataUpdate: (data) => {
           const { cpus, gpus, ram, kraken } = data;
-
-          console.log("cpus");
 
           const cpu = cpus.pop();
 
@@ -43,6 +47,14 @@ const useMonitoring = () => {
             watts: Number(cpu?.power.toFixed(0)),
           });
 
+          setCpuWatts((prevCpuWatts) => {
+            const newCpuWatts = [
+              ...prevCpuWatts.slice(1),
+              Number(cpu?.power.toFixed(0)),
+            ];
+            return newCpuWatts;
+          });
+
           setGpu({
             name: gpu?.name,
             load: Number(((gpu?.load ?? 1) * 100).toFixed(0)) ?? 0,
@@ -51,6 +63,14 @@ const useMonitoring = () => {
             frequency: Number(gpu?.frequency),
             fan: Number(gpu?.fanSpeed),
             watts: Number(gpu?.power.toFixed(0)),
+          });
+
+          setGpuWatts((prevGpuWatts) => {
+            const newGpuWatts = [
+              ...prevGpuWatts.slice(1),
+              Number(gpu?.power.toFixed(0)),
+            ];
+            return newGpuWatts;
           });
 
           setRam({
@@ -69,7 +89,7 @@ const useMonitoring = () => {
     };
   }, []);
 
-  return { cpu, gpu, ram, kraken };
+  return { cpu, gpu, ram, kraken, cpuWatts, gpuWatts };
 };
 
 export default useMonitoring;

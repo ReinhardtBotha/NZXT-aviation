@@ -1,8 +1,10 @@
 import "./App.css";
 import RadialGauge from "./components/RadialGauge";
 import BarGauge from "./components/BarGauge";
+import ColumnGauge from "./components/ColumnGauge";
 
 import useMonitoring from "./hooks/useMonitoring";
+import SplineAreaChart from "./components/SplineAreaChart";
 
 {
   /* <h2>CPU Temp: {cpu?.temperature}</h2>
@@ -21,7 +23,7 @@ import useMonitoring from "./hooks/useMonitoring";
 }
 
 const App = () => {
-  const { cpu, gpu, ram, kraken } = useMonitoring();
+  const { cpu, gpu, ram, kraken, cpuWatts, gpuWatts } = useMonitoring();
 
   return (
     <>
@@ -37,6 +39,7 @@ const App = () => {
         <p className="indicator-label">LIQUID</p>
         <p>{kraken?.temperature}°C</p>
       </div>
+
       <div
         style={{
           display: "flex",
@@ -57,6 +60,7 @@ const App = () => {
       >
         <div
           style={{
+            height: "250px",
             width: "100%",
             display: "flex",
             flexDirection: "column",
@@ -64,7 +68,7 @@ const App = () => {
             paddingLeft: "3rem",
           }}
         >
-          <div className="label-data-container">
+          {/* <div className="label-data-container">
             <p className="indicator-label">PUMP RPM</p>
             <p>{cpu?.fan || `--`}</p>
           </div>
@@ -79,7 +83,8 @@ const App = () => {
           <div className="label-data-container">
             <p className="indicator-label">GPU FREQ</p>
             <p>{gpu?.frequency || `--`}</p>
-          </div>
+          </div> */}
+          <SplineAreaChart cpuWatts={cpuWatts} gpuWatts={gpuWatts} />
         </div>
 
         <div
@@ -90,13 +95,22 @@ const App = () => {
             paddingRight: "3rem",
           }}
         >
-          <BarGauge data={cpu?.load} max={cpu?.m}/>
+          <BarGauge data={cpu?.load} />
           <h3>CPU Load</h3>
           <BarGauge data={gpu?.load} />
           <h3>GPU Load</h3>
           <BarGauge data={ram?.inUsePercent} />
           <h3>RAM Load</h3>
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <ColumnGauge data={ram?.inUsePercent} />
       </div>
     </>
   );
