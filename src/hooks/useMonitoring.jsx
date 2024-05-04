@@ -6,10 +6,10 @@ const useMonitoring = () => {
   const [ram, setRam] = React.useState();
   const [kraken, setKraken] = React.useState();
   const [cpuWatts, setCpuWatts] = React.useState(
-    Array.from({ length: 20 }, (_, index) => index + 1)
+    Array.from({ length: 60 }, (_, index) => index + 1)
   );
   const [gpuWatts, setGpuWatts] = React.useState(
-    Array.from({ length: 20 }, (_, index) => index + 1)
+    Array.from({ length: 60 }, (_, index) => index + 1)
   );
 
   React.useEffect(() => {
