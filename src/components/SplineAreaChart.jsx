@@ -2,9 +2,21 @@ import ReactApexChart from "react-apexcharts";
 
 const SplineAreaChart = (props) => {
   const options = {
+    theme: {
+      mode: "dark",
+      palette: 'palette1', 
+    },
+    tooltip: {
+      enabled: false,
+    },
     chart: {
-      height: 350,
-      type: "area",
+      toolbar: {
+        show: false,
+      },
+      background: "transparent",
+      sparkline: {
+        enabled: false,
+      },
     },
     dataLabels: {
       enabled: false,
@@ -12,8 +24,26 @@ const SplineAreaChart = (props) => {
     stroke: {
       curve: "smooth",
     },
+    title: {
+      text: "POWER (W)",
+      offsetY: 10,
+      floating: true,
+      style: {
+        fontSize: "1.2rem",
+        fontWeight:  'bold',
+      },
+    },
+    legend: {
+      show: true,
+      offsetY: 10,
+      fontSize: "25rem",
+      floating: true,
+    },
+    grid: {
+      show: false,
+    },
     xaxis: {
-      type: "seconds",
+      type: "category",
       categories: [
         "1",
         "2",
@@ -36,10 +66,11 @@ const SplineAreaChart = (props) => {
         "19",
         "20",
       ],
-    },
-    tooltip: {
-      x: {
-        format: "dd/MM/yy HH:mm",
+      labels: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
       },
     },
   };

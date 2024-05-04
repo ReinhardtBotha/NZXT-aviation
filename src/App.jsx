@@ -60,7 +60,7 @@ const App = () => {
       >
         <div
           style={{
-            height: "250px",
+            height: "200px",
             width: "100%",
             display: "flex",
             flexDirection: "column",
