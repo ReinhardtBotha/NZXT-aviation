@@ -36,19 +36,8 @@ body {
 }
 
 p {
-
   font-size: 2.5rem;
   padding: 0;
   margin: 0;
 }
 
-.indicator-label {
-  font-size: 1.1rem;
-}
-
-.label-data-container {
-  width: 90px;
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-}

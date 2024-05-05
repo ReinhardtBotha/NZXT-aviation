@@ -77,7 +77,7 @@ const RadialGauge = (props) => {
         options={options}
         series={series}
         type="radialBar"
-        height={350}
+        height="350px"
       />
     </>
   );

@@ -1,4 +1,3 @@
-import "./App.css";
 import RadialGauge from "./components/RadialGauge";
 import BarGauge from "./components/BarGauge";
 
@@ -16,10 +15,17 @@ const App = () => {
           flexDirection: "column",
           alignItems: "center",
           position: "absolute",
-          left: "41%",
+          width: "112px",
+          left: "264px",
         }}
       >
-        <p className="indicator-label">LIQUID</p>
+        <p
+          style={{
+            fontSize: "1.1rem",
+          }}
+        >
+          LIQUID
+        </p>
         <p>{kraken?.temperature || 0}°C</p>
       </div>
 
@@ -28,6 +34,7 @@ const App = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
+          height: "247px"
         }}
       >
         <RadialGauge data={cpu?.temperature} label={"CPU"} />
@@ -79,10 +86,17 @@ const App = () => {
           { label: "PUMP", value: cpu?.fan || "0", unit: "RPM" },
           { label: "GPU", value: gpu?.frequency || "0", unit: "MHz" },
         ].map((item, index, array) => (
-          <div className="label-data-container" key={index}>
+          <div
+            className="label-data-container"
+            style={{
+              width: "90px",
+              marginTop: "1.5rem",
+            }}
+            key={index}
+          >
             <p
-              className="indicator-label"
               style={{
+                fontSize: "1.1rem",
                 textAlign:
                   index === 0
                     ? "right"
@@ -95,7 +109,6 @@ const App = () => {
             </p>
             <p>{item.value}</p>
             <p
-              className="indicator-unit"
               style={{
                 fontSize: "1.1rem",
                 textAlign:
