@@ -73,21 +73,63 @@ const BarGauge = (props) => {
   };
   const series = [
     {
-      // eslint-disable-next-line react/prop-types
       data: [props?.data || 0],
     },
   ];
 
   return (
-    <>
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="bar"
-        width="100%"
-        height={20}
-      />
-    </>
+    <div
+      style={{
+        width: "100%",
+        paddingLeft: "0.8rem",
+        display: "flex",
+        flexDirection: "row",
+      }}
+    >
+      <div>
+        <ReactApexChart
+          options={options}
+          series={series}
+          type="bar"
+          width="180px"
+          height={20}
+        />
+        <h3
+          style={{
+            fontSize: "1.5rem",
+            margin: "0",
+          }}
+        >
+          {props?.label || "No Label"}
+        </h3>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          flexDirection: "column",
+          marginLeft: "1.5rem",
+        }}
+      >
+        <p
+          style={{
+            display: "block",
+            width: "40px",
+            marginTop: "-0.7rem",
+          }}
+        >
+          {props?.data || "00"}
+        </p>
+        <p
+          style={{
+            marginTop: "-0.5rem",
+            fontSize: "1.1rem",
+          }}
+        >
+          %
+        </p>
+      </div>
+    </div>
   );
 };
 

@@ -1,58 +1,57 @@
 import ReactApexChart from "react-apexcharts";
 
 const SplineAreaChart = (props) => {
-const options = {
+  const options = {
     theme: {
-        mode: "dark",
-        palette: 'palette1', 
+      mode: "dark",
+      palette: "palette1",
     },
     tooltip: {
-        enabled: false,
+      enabled: false,
     },
     chart: {
-        toolbar: {
-            show: false,
-        },
-        background: "transparent",
-        sparkline: {
-            enabled: false,
-        },
+      toolbar: {
+        show: false,
+      },
+      background: "transparent",
+      sparkline: {
+        enabled: false,
+      },
     },
     dataLabels: {
-        enabled: false,
+      enabled: false,
     },
     stroke: {
-        curve: "straight",
+      curve: "straight",
     },
     title: {
-        text: "POWER (W)",
-        offsetY: 10,
-        floating: true,
-        style: {
-            fontSize: "1.2rem",
-            fontWeight:  'bold',
-        },
+      text: "POWER (W)",
+      offsetY: 10,
+      floating: true,
+      style: {
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+      },
     },
     legend: {
-        show: true,
-        offsetY: 10,
-        fontSize: "25rem",
-        floating: true,
+      show: true,
+      offsetY: 10,
+      fontSize: "25rem",
+      floating: true,
     },
     grid: {
-        show: false,
+      show: false,
     },
     xaxis: {
-        type: "category",
-        // categories: Array.from({length: 40}, (_, i) => (i + 1).toString()),
-        labels: {
-            show: false,
-        },
-        axisTicks: {
-            show: false,
-        },
+      type: "category",
+      labels: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
     },
-};
+  };
   const series = [
     {
       name: "CPU",

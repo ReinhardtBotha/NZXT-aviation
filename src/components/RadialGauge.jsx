@@ -35,7 +35,7 @@ const RadialGauge = (props) => {
             fontSize: "4rem",
             color: "white",
             formatter: function (val) {
-             return val + "°C";
+              return val + "°C";
             },
           },
         },
@@ -66,10 +66,9 @@ const RadialGauge = (props) => {
       opacity: 1,
     },
 
-    // eslint-disable-next-line react/prop-types
     labels: [props.label],
   };
-  // eslint-disable-next-line react/prop-types
+
   const series = [[props?.data || 50]];
 
   return (

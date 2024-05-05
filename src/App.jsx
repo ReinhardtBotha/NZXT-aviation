@@ -5,22 +5,6 @@ import BarGauge from "./components/BarGauge";
 import useMonitoring from "./hooks/useMonitoring";
 import SplineAreaChart from "./components/SplineAreaChart";
 
-{
-  /* <h2>CPU Temp: {cpu?.temperature}</h2>
-<h2>Liquid Temp: {kraken?.temperature}</h2>
-<h2>GPU Temp: {gpu?.temperature}</h2>
-<h2>AIO Pump: {cpu?.fan}</h2>
-<h2>GPU Fan: {gpu?.fan}</h2>
-<h2>CPU Freq: {cpu?.frequency}</h2>
-<h2>GPU Freq: {gpu?.frequency}</h2>
-<h2>RAM total: {ram?.totalSize}</h2>
-<h2>CPU Load: {cpu?.load}</h2>
-<h2>GPU Load: {gpu?.load}</h2>
-<h2>RAM Load: {ram?.inUsePercent}</h2>
-<h2>CPU Watt: {cpu?.watts}</h2>
-<h2>GPU Watt: {gpu?.watts}</h2>  */
-}
-
 const App = () => {
   const { cpu, gpu, ram, kraken, cpuWatts, gpuWatts } = useMonitoring();
 
@@ -60,11 +44,11 @@ const App = () => {
         <div
           style={{
             height: "200px",
-            width: "100%",
+            width: "280px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            paddingLeft: "3rem",
+
           }}
         >
           <SplineAreaChart cpuWatts={cpuWatts} gpuWatts={gpuWatts} />
@@ -72,119 +56,15 @@ const App = () => {
 
         <div
           style={{
-            width: "100%",
+            width: "280px",
             display: "flex",
             flexDirection: "column",
             gap: "1.5rem",
-            paddingRight: "3rem",
-            paddingLeft: "1rem",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <div>
-              <BarGauge data={cpu?.load} />
-              <h3>CPU Load</h3>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "40px",
-                marginLeft: "1.5rem"
-              }}
-            >
-              <p style={{
-                  marginTop: "-0.7rem"
-                }}>{cpu?.load || "00"}</p>
-              <p
-                style={{
-                  marginTop: "-0.5rem",
-                  fontSize: "1.1rem",
-                }}
-              >
-                %
-              </p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <div>
-              <BarGauge data={gpu?.load} />
-              <h3>GPU Load</h3>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "40px",
-                marginLeft: "1.5rem"
-              }}
-            >
-              <p style={{
-                  marginTop: "-0.7rem"
-                }}>{cpu?.load || "00"}</p>
-              <p
-                style={{
-                  marginTop: "-0.5rem",
-                  fontSize: "1.1rem",
-                }}
-              >
-                %
-              </p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <div>
-              <BarGauge data={ram?.inUsePercent} />
-              <h3>CPU Load</h3>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "40px",
-                marginLeft: "1.5rem"
-              }}
-            >
-              <p style={{
-                  marginTop: "-0.7rem"
-                }}>{ram?.inUsePercent || "00"}</p>
-              <p
-                style={{
-                  marginTop: "-0.5rem",
-                  fontSize: "1.1rem",
-                }}
-              >
-                %
-              </p>
-            </div>
-          </div>
-
-          {/* <div>
-            <BarGauge data={gpu?.load} />
-            <h3>GPU Load</h3>
-          </div>
-          <div>
-            <BarGauge data={ram?.inUsePercent} />
-            <h3>RAM Load</h3>
-          </div> */}
-
+          <BarGauge data={cpu?.load} label={"CPU Load"} />
+          <BarGauge data={gpu?.load} label={"GPU Load"} />
+          <BarGauge data={ram?.inUsePercent} label={"RAM Load"} />
         </div>
       </div>
       <div
