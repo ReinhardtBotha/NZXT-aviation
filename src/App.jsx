@@ -20,7 +20,7 @@ const App = () => {
         }}
       >
         <p className="indicator-label">LIQUID</p>
-        <p>{kraken?.temperature}°C</p>
+        <p>{kraken?.temperature || 0}°C</p>
       </div>
 
       <div
@@ -48,7 +48,6 @@ const App = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-
           }}
         >
           <SplineAreaChart cpuWatts={cpuWatts} gpuWatts={gpuWatts} />
@@ -76,9 +75,9 @@ const App = () => {
         }}
       >
         {[
-          { label: "CPU", value: cpu?.frequency || "--", unit: "MHz" },
-          { label: "PUMP", value: cpu?.fan || "--", unit: "RPM" },
-          { label: "GPU", value: gpu?.frequency || "--", unit: "MHz" },
+          { label: "CPU", value: cpu?.frequency || "0", unit: "MHz" },
+          { label: "PUMP", value: cpu?.fan || "0", unit: "RPM" },
+          { label: "GPU", value: gpu?.frequency || "0", unit: "MHz" },
         ].map((item, index, array) => (
           <div className="label-data-container" key={index}>
             <p

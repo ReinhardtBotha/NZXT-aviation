@@ -118,7 +118,7 @@ const BarGauge = (props) => {
             marginTop: "-0.7rem",
           }}
         >
-          {props?.data || "00"}
+          {props?.data || "0"}
         </p>
         <p
           style={{

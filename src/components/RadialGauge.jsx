@@ -69,7 +69,7 @@ const RadialGauge = (props) => {
     labels: [props.label],
   };
 
-  const series = [[props?.data || 50]];
+  const series = [[props?.data || 0]];
 
   return (
     <>
