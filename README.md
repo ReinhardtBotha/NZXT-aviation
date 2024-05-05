@@ -1,8 +1,8 @@
-# NZXT-aviation
+# NZXT Aviation Gauge
 
 Aircraft Engine Indicating and Crew Alerting System (EICAS) inspired gauge using the NZXT web integrations API.
 
-<img src="Screenshot1.png" width=450 />
+<img src="Screenshot1.png" width=550 />
 <img src="Recording1.gif" />
 
 # Use in Kraken web integration
