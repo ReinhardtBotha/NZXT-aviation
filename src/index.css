@@ -20,7 +20,7 @@ body {
   height: 640px;
   border-radius: 50%;
   background-color: black;
-
+  background-image: url("./assets/Frame_1.svg");
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
@@ -52,11 +52,12 @@ h3:last-child {
 }
 
 .indicator-label {
-  font-size: 1.8rem;
+  font-size: 1.1rem;
 }
 
 .label-data-container {
+  width: 90px;
+  margin-top: 1.5rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 }

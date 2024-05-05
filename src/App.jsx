@@ -1,7 +1,6 @@
 import "./App.css";
 import RadialGauge from "./components/RadialGauge";
 import BarGauge from "./components/BarGauge";
-import ColumnGauge from "./components/ColumnGauge";
 
 import useMonitoring from "./hooks/useMonitoring";
 import SplineAreaChart from "./components/SplineAreaChart";
@@ -19,7 +18,7 @@ import SplineAreaChart from "./components/SplineAreaChart";
 <h2>GPU Load: {gpu?.load}</h2>
 <h2>RAM Load: {ram?.inUsePercent}</h2>
 <h2>CPU Watt: {cpu?.watts}</h2>
-<h2>GPU Watt: {gpu?.watts}</h2> */
+<h2>GPU Watt: {gpu?.watts}</h2>  */
 }
 
 const App = () => {
@@ -68,22 +67,6 @@ const App = () => {
             paddingLeft: "3rem",
           }}
         >
-          {/* <div className="label-data-container">
-            <p className="indicator-label">PUMP RPM</p>
-            <p>{cpu?.fan || `--`}</p>
-          </div>
-          <div className="label-data-container">
-            <p className="indicator-label">GPU RPM</p>
-            <p>{gpu?.fan || `--`}</p>
-          </div>
-          <div className="label-data-container">
-            <p className="indicator-label">CPU FREQ</p>
-            <p>{cpu?.frequency || `--`}</p>
-          </div>
-          <div className="label-data-container">
-            <p className="indicator-label">GPU FREQ</p>
-            <p>{gpu?.frequency || `--`}</p>
-          </div> */}
           <SplineAreaChart cpuWatts={cpuWatts} gpuWatts={gpuWatts} />
         </div>
 
@@ -92,15 +75,116 @@ const App = () => {
             width: "100%",
             display: "flex",
             flexDirection: "column",
+            gap: "1.5rem",
             paddingRight: "3rem",
+            paddingLeft: "1rem",
           }}
         >
-          <BarGauge data={cpu?.load} />
-          <h3>CPU Load</h3>
-          <BarGauge data={gpu?.load} />
-          <h3>GPU Load</h3>
-          <BarGauge data={ram?.inUsePercent} />
-          <h3>RAM Load</h3>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <BarGauge data={cpu?.load} />
+              <h3>CPU Load</h3>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "40px",
+                marginLeft: "1.5rem"
+              }}
+            >
+              <p style={{
+                  marginTop: "-0.7rem"
+                }}>{cpu?.load || "00"}</p>
+              <p
+                style={{
+                  marginTop: "-0.5rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                %
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <BarGauge data={gpu?.load} />
+              <h3>GPU Load</h3>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "40px",
+                marginLeft: "1.5rem"
+              }}
+            >
+              <p style={{
+                  marginTop: "-0.7rem"
+                }}>{cpu?.load || "00"}</p>
+              <p
+                style={{
+                  marginTop: "-0.5rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                %
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <BarGauge data={ram?.inUsePercent} />
+              <h3>CPU Load</h3>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "40px",
+                marginLeft: "1.5rem"
+              }}
+            >
+              <p style={{
+                  marginTop: "-0.7rem"
+                }}>{ram?.inUsePercent || "00"}</p>
+              <p
+                style={{
+                  marginTop: "-0.5rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                %
+              </p>
+            </div>
+          </div>
+
+          {/* <div>
+            <BarGauge data={gpu?.load} />
+            <h3>GPU Load</h3>
+          </div>
+          <div>
+            <BarGauge data={ram?.inUsePercent} />
+            <h3>RAM Load</h3>
+          </div> */}
+
         </div>
       </div>
       <div
@@ -108,9 +192,45 @@ const App = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
+          gap: "3.2rem",
         }}
       >
-        <ColumnGauge data={ram?.inUsePercent} />
+        {[
+          { label: "CPU", value: cpu?.frequency || "--", unit: "MHz" },
+          { label: "PUMP", value: cpu?.fan || "--", unit: "RPM" },
+          { label: "GPU", value: gpu?.frequency || "--", unit: "MHz" },
+        ].map((item, index, array) => (
+          <div className="label-data-container" key={index}>
+            <p
+              className="indicator-label"
+              style={{
+                textAlign:
+                  index === 0
+                    ? "right"
+                    : index === array.length - 1
+                    ? "left"
+                    : "center",
+              }}
+            >
+              {item.label}
+            </p>
+            <p>{item.value}</p>
+            <p
+              className="indicator-unit"
+              style={{
+                fontSize: "1.1rem",
+                textAlign:
+                  index === 0
+                    ? "right"
+                    : index === array.length - 1
+                    ? "left"
+                    : "center",
+              }}
+            >
+              {item.unit}
+            </p>
+          </div>
+        ))}
       </div>
     </>
   );

@@ -35,7 +35,7 @@ const RadialGauge = (props) => {
             fontSize: "4rem",
             color: "white",
             formatter: function (val) {
-              return val + "°C";
+             return val + "°C";
             },
           },
         },
