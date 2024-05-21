@@ -23,6 +23,7 @@ const SplineAreaChart = (props) => {
     },
     stroke: {
       curve: "straight",
+      width: 1.5,
     },
     title: {
       text: "POWER (W)",
