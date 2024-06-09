@@ -23,3 +23,7 @@ Local URL for NZXT CAM: http://localhost:5173/NZXT-aviation/
 - React
 - Vite
 - ApexCharts
+
+# Disclaimer
+
+This integration was developed and tested on the Kraken Elite. Therefore, it may not function as expected on models with different screen sizes.
