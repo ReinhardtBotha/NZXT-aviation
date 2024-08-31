@@ -1,7 +1,12 @@
 import ReactApexChart from "react-apexcharts";
+import React from "react";
 
-const SplineAreaChart = (props) => {
+// eslint-disable-next-line react/display-name
+const SplineAreaChart = React.memo((props) => {
   const options = {
+    animations: {
+      enabled: false,
+    },
     theme: {
       mode: "dark",
       palette: "palette1",
@@ -23,7 +28,7 @@ const SplineAreaChart = (props) => {
     },
     stroke: {
       curve: "straight",
-      width: 1.5,
+      width: 2,
     },
     title: {
       text: "POWER (W)",
@@ -44,7 +49,7 @@ const SplineAreaChart = (props) => {
       show: false,
     },
     xaxis: {
-      type: "category",
+      type: "numeric",
       labels: {
         show: false,
       },
@@ -56,11 +61,11 @@ const SplineAreaChart = (props) => {
   const series = [
     {
       name: "CPU",
-      data: props.cpuWatts ? props.cpuWatts.slice(0, 59) : [],
+      data: props.cpuWatts ? props.cpuWatts : [],
     },
     {
       name: "GPU",
-      data: props.gpuWatts ? props.gpuWatts.slice(0, 59) : [],
+      data: props.gpuWatts ? props.gpuWatts : [],
     },
   ];
 
@@ -75,6 +80,6 @@ const SplineAreaChart = (props) => {
       />
     </>
   );
-};
+});
 
 export default SplineAreaChart;

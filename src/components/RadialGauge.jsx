@@ -1,6 +1,8 @@
 import ReactApexChart from "react-apexcharts";
+import React from "react";
 
-const RadialGauge = (props) => {
+// eslint-disable-next-line react/display-name
+const RadialGauge = React.memo((props) => {
   const options = {
     theme: {
       mode: "dark",
@@ -81,6 +83,6 @@ const RadialGauge = (props) => {
       />
     </>
   );
-};
+})
 
 export default RadialGauge;

@@ -1,6 +1,8 @@
 import ReactApexChart from "react-apexcharts";
+import React from "react";
 
-const BarGauge = (props) => {
+// eslint-disable-next-line react/display-name
+const BarGauge = React.memo((props) => {
   const options = {
     theme: {
       mode: "dark",
@@ -131,6 +133,6 @@ const BarGauge = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default BarGauge;
