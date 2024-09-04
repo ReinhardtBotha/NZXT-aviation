@@ -23,6 +23,7 @@ Local URL for NZXT CAM: http://localhost:5173/NZXT-aviation/
 - React
 - Vite
 - ApexCharts
+- Styled Components
 
 # Disclaimer
 
